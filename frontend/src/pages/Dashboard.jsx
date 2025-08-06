@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+
 // Example icon imports (replace with your actual icon/image paths)
 import { FaTwitter, FaLinkedin, FaWordpress, FaLock } from "react-icons/fa";
 
@@ -57,7 +57,6 @@ const modules = [
 const Dashboard = () => {
   return (
     <div className="min-h-screen w-full bg-transparent overflow-y-auto font-sans">
-      <Navbar />
       <div className="relative z-10 px-4 md:px-8 lg:px-16 py-12">
         <div className="w-full flex flex-col items-center justify-center">
           <div className="w-full max-w-5xl bg-white/10 backdrop-blur-xl rounded-3xl p-10 border border-cyan-400/30 shadow-2xl">
@@ -93,6 +92,7 @@ const Dashboard = () => {
         <div className="h-24"></div>
       </div>
     </div>
+    
   );
 };
 

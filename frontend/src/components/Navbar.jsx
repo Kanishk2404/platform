@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 
 function Navbar(){
@@ -33,10 +34,11 @@ return (
 </button>
 
             <div className='links hidden md:flex space-x-8'>
-                <a href="/home" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">Home</a>
-                <a href="/services" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">Help</a>
-                <a href="/about" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">About</a>
-                <a href="/contact-us" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">Contact Us</a>
+                <Link to="/" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">Home</Link>
+                <Link to="/plans-and-services" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">Plans & Services</Link>
+                <a href="/blog" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">Blog</a>
+                <Link to="/about" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">About</Link>
+                <Link to="/contact" className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer">Contact Us</Link>
             </div>
             
             <div className='user-profile hidden md:flex items-center space-x-4'>
@@ -73,10 +75,11 @@ return (
             
             {/* Mobile Menu Content */}
             <div className="flex flex-col p-6 pt-16 space-y-6">
-                <a href="/home" className="text-white hover:text-cyan-400 transition-colors">Home</a>
-                <a href="/services" className="text-white hover:text-cyan-400 transition-colors">Help</a>
-                <a href="/about" className="text-white hover:text-cyan-400 transition-colors">About</a>
-                <a href="/contact-us" className="text-white hover:text-cyan-400 transition-colors">Contact Us</a>
+                <Link to="/" className="text-white hover:text-cyan-400 transition-colors">Home</Link>
+                <Link to="/plans-and-services" className="text-white hover:text-cyan-400 transition-colors">Plans & Services</Link>
+                <a href="/blog" className="text-white hover:text-cyan-400 transition-colors">Blog</a>
+                <Link to="/about" className="text-white hover:text-cyan-400 transition-colors">About</Link>
+                <Link to="/contact" className="text-white hover:text-cyan-400 transition-colors">Contact Us</Link>
                 
                 {/* Mobile Login Button */}
                 <div className="pt-4 border-t border-gray-700">
