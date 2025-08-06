@@ -1,0 +1,7 @@
+.hyperspeed-bg {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  pointer-events: none;
+}
