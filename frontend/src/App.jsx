@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AgencyServices from "./pages/AgencyServices";
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/plans-and-services" element={<PlansAndServices />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/agency-services" element={<AgencyServices />} />
             {/* fallback: redirect unknown routes to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
