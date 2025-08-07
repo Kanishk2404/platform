@@ -25,7 +25,20 @@ import FeatureAccordion from '../components/FeatureAccordion';
 import FadeInSection from '../components/FadeInSection';
 
 const Home = () => {
-  const user = "Alex";
+  // Get user name/email from JWT in localStorage
+  let user = '';
+  let isLoggedIn = false;
+  try {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      user = payload.name || payload.username || payload.email || 'User';
+      isLoggedIn = true;
+    }
+  } catch {
+    user = 'User';
+    isLoggedIn = false;
+  }
   const [showNotification, setShowNotification] = React.useState(true);
 
   return (
@@ -33,7 +46,7 @@ const Home = () => {
       <style>{animationStyles}</style>
       <div className="relative z-10 px-4 md:px-8 lg:px-16">
         {/* Notification Toast */}
-        {showNotification && (
+        {showNotification && isLoggedIn && (
           <div className="fixed top-6 right-6 z-50">
             <div className="flex items-center bg-white/10 backdrop-blur-xl rounded-xl px-6 py-3 border border-cyan-400/40 shadow-lg">
               <span className="text-xl mr-3 text-cyan-300">🎉</span>

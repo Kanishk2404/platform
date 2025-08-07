@@ -34,7 +34,8 @@ const modules = [
       </>
     ),
     icon: <FaTwitter className="text-cyan-400 text-5xl mb-4" />,
-    link: "https://tweet-automation-docker-production-7b60.up.railway.app/"
+    // link: "https://tweet-automation-docker-production-7b60.up.railway.app/"
+    link: null // We'll handle navigation with token
   },
   {
     name: "WordPress Blogs (Under Development)",
@@ -70,7 +71,24 @@ const Dashboard = () => {
                   {mod.icon}
                   <h2 className="text-2xl font-bold text-white mb-4 text-center font-sans tracking-tight">{mod.name}</h2>
                   <div className="text-white text-base mb-8 text-left w-full">{mod.description}</div>
-                  <a href={mod.link} className={`mt-auto bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-xl text-lg transition-all shadow-lg w-full text-center ${mod.link === '#' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}>Get Started &rarr;</a>
+                  {mod.name === "Twitter Genie" ? (
+                    <button
+                      className="mt-auto bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-xl text-lg transition-all shadow-lg w-full text-center"
+                      onClick={() => {
+                        const token = localStorage.getItem('token');
+                        if (token) {
+                          const url = `https://tweet-automation-docker-production-7b60.up.railway.app/?token=${encodeURIComponent(token)}`;
+                          window.open(url, '_blank');
+                        } else {
+                          alert('You must be logged in to access Tweet Genie.');
+                        }
+                      }}
+                    >
+                      Get Started &rarr;
+                    </button>
+                  ) : (
+                    <a href={mod.link} className={`mt-auto bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-xl text-lg transition-all shadow-lg w-full text-center ${mod.link === '#' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}>Get Started &rarr;</a>
+                  )}
                 </div>
               ))}
             </div>

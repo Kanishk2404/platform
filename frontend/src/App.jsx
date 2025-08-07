@@ -10,7 +10,29 @@ import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AgencyServices from "./pages/AgencyServices";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import VerifyOtp from "./pages/VerifyOtp";
 import './App.css';
+
+function isValidJwt(token) {
+  if (!token) return false;
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    // Optionally check for exp, userId, etc.
+    return !!payload && (!payload.exp || payload.exp * 1000 > Date.now());
+  } catch {
+    return false;
+  }
+}
+
+function PrivateRoute({ children }) {
+  const token = localStorage.getItem('token');
+  if (!isValidJwt(token)) {
+    return <Navigate to="/signup" replace />;
+  }
+  return children;
+}
 
 function App() {
   return (
@@ -23,8 +45,15 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/plans-and-services" element={<PlansAndServices />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            } />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/verify-otp" element={<VerifyOtp />} />
             <Route path="/agency-services" element={<AgencyServices />} />
             {/* fallback: redirect unknown routes to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
