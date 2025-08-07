@@ -8,7 +8,11 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'https://platform-production-1ab4.up.railway.app',
+    'https://your-frontend-vercel-domain.vercel.app' // replace with your actual Vercel frontend domain
+  ],
   credentials: true
 }));
 
