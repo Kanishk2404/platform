@@ -77,7 +77,7 @@ const Dashboard = () => {
                       onClick={() => {
                         const token = localStorage.getItem('token');
                         if (token) {
-                          const url = `https://tweet-automation-docker-production-7b60.up.railway.app/?token=${encodeURIComponent(token)}`;
+                          const url = `http://localhost:5173/?token=${encodeURIComponent(token)}`;
                           window.open(url, '_blank');
                         } else {
                           alert('You must be logged in to access Tweet Genie.');
